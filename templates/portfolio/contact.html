@@ -1,0 +1,739 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %}Contact - Matrix Portfolio{% endblock %}
+
+{% block content %}
+<!-- Contact Header -->
+<section class="matrix-section" id="contact-header" style="padding-top: 120px;">
+    <div class="container">
+        <div class="text-center">
+            <h1 class="section-title" data-aos="fade-up">Establish Connection</h1>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+                Ready to bring your digital vision to life? Let's connect and create something extraordinary together.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Content -->
+<section class="matrix-section" id="contact-content">
+    <div class="container">
+        <div class="row">
+            <!-- Contact Form -->
+            <div class="col-lg-8" data-aos="fade-right">
+                <div class="contact-form-container">
+                    <h2 class="form-title">
+                        <i class="fas fa-terminal"></i>
+                        Send Message
+                    </h2>
+                    
+                    <form id="contactForm" method="post" action="{% url 'portfolio:contact' %}" class="matrix-form">
+                        {% csrf_token %}
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="{{ form.name.id_for_label }}" class="form-label">
+                                    <i class="fas fa-user"></i> Name
+                                </label>
+                                {{ form.name }}
+                                <div class="form-border"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="{{ form.email.id_for_label }}" class="form-label">
+                                    <i class="fas fa-envelope"></i> Email
+                                </label>
+                                {{ form.email }}
+                                <div class="form-border"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.subject.id_for_label }}" class="form-label">
+                                <i class="fas fa-tag"></i> Subject
+                            </label>
+                            {{ form.subject }}
+                            <div class="form-border"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.message.id_for_label }}" class="form-label">
+                                <i class="fas fa-comment"></i> Message
+                            </label>
+                            {{ form.message }}
+                            <div class="form-border"></div>
+                        </div>
+                        
+                        <div class="form-submit">
+                            <button type="submit" class="matrix-btn submit-btn">
+                                <span class="btn-text">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Send Message
+                                </span>
+                                <div class="btn-loading">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    Sending...
+                                </div>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Contact Info -->
+            <div class="col-lg-4" data-aos="fade-left">
+                <div class="contact-info-container">
+                    <h2 class="info-title">
+                        <i class="fas fa-satellite-dish"></i>
+                        Contact Information
+                    </h2>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="method-content">
+                                <h3>Email</h3>
+                                <p>your.email@example.com</p>
+                                <a href="mailto:your.email@example.com" class="method-link">
+                                    Send Email <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="method-content">
+                                <h3>Location</h3>
+                                <p>Your City, Country</p>
+                                <span class="method-note">Available for remote work</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="method-content">
+                                <h3>Response Time</h3>
+                                <p>Usually within 24 hours</p>
+                                <span class="method-note">Monday - Friday</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-connect">
+                        <h3 class="social-title">Connect With Me</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link github" title="GitHub">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </a>
+                            <a href="#" class="social-link linkedin" title="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="#" class="social-link twitter" title="Twitter">
+                                <i class="fab fa-twitter"></i>
+                                <span>Twitter</span>
+                            </a>
+                            <a href="#" class="social-link discord" title="Discord">
+                                <i class="fab fa-discord"></i>
+                                <span>Discord</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="availability-status">
+                        <div class="status-indicator">
+                            <div class="status-dot available"></div>
+                            <span class="status-text">Available for new projects</span>
+                        </div>
+                        <p class="status-description">
+                            I'm currently accepting new freelance projects and collaboration opportunities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="matrix-section" id="faq-section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Frequently Asked Questions</h2>
+        
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="faq-container">
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right"></i>
+                            <h3>What services do you offer?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>I specialize in full-stack web development, including frontend and backend development, 
+                               database design, API development, and deployment. I also offer consulting services 
+                               for technical architecture and code reviews.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right"></i>
+                            <h3>What is your typical project timeline?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Project timelines vary depending on complexity and scope. A simple website might take 
+                               2-4 weeks, while complex web applications can take 2-6 months. I provide detailed 
+                               timelines after understanding your specific requirements.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right"></i>
+                            <h3>Do you work with international clients?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! I work with clients worldwide and am comfortable with remote collaboration. 
+                               I'm flexible with time zones and use modern communication tools to ensure 
+                               smooth project management.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right"></i>
+                            <h3>What technologies do you work with?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>I primarily work with Python/Django for backend development, JavaScript/React for 
+                               frontend, and various databases including PostgreSQL and MongoDB. I'm also 
+                               experienced with cloud platforms like AWS and deployment tools.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Contact Page Styles */
+.section-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 60px;
+}
+
+/* Contact Form */
+.contact-form-container {
+    background: rgba(26, 26, 26, 0.95);
+    border: 1px solid var(--matrix-red);
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-form-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--matrix-red), var(--matrix-green));
+}
+
+.form-title {
+    color: var(--matrix-white);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.form-title i {
+    color: var(--matrix-red);
+}
+
+.matrix-form {
+    max-width: 100%;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.form-label {
+    color: var(--matrix-white);
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-label i {
+    color: var(--matrix-red);
+    font-size: 0.9rem;
+}
+
+.matrix-input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5) !important;
+    border: 1px solid var(--matrix-gray) !important;
+    color: var(--matrix-white) !important;
+    padding: 15px !important;
+    border-radius: 8px !important;
+    font-family: var(--n-dot-font) !important;
+    transition: all var(--transition-speed) ease !important;
+    font-size: 1rem !important;
+}
+
+.matrix-input:focus {
+    background: rgba(0, 0, 0, 0.8) !important;
+    border-color: var(--matrix-red) !important;
+    box-shadow: 0 0 20px var(--matrix-red-glow) !important;
+    outline: none !important;
+}
+
+.form-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--matrix-red), var(--matrix-green));
+    transition: width var(--transition-speed) ease;
+}
+
+.matrix-input:focus + .form-border {
+    width: 100%;
+}
+
+.submit-btn {
+    position: relative;
+    min-width: 200px;
+    overflow: hidden;
+}
+
+.btn-text,
+.btn-loading {
+    transition: all var(--transition-speed) ease;
+}
+
+.btn-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+.submit-btn.loading .btn-text {
+    opacity: 0;
+}
+
+.submit-btn.loading .btn-loading {
+    opacity: 1;
+}
+
+/* Contact Info */
+.contact-info-container {
+    height: 100%;
+}
+
+.info-title {
+    color: var(--matrix-white);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.info-title i {
+    color: var(--matrix-red);
+}
+
+.contact-methods {
+    margin-bottom: 40px;
+}
+
+.contact-method {
+    display: flex;
+    gap: 20px;
+    padding: 25px;
+    background: rgba(26, 26, 26, 0.5);
+    border: 1px solid var(--matrix-gray);
+    border-radius: 15px;
+    margin-bottom: 20px;
+    transition: all var(--transition-speed) ease;
+}
+
+.contact-method:hover {
+    border-color: var(--matrix-red);
+    box-shadow: 0 10px 30px rgba(255, 7, 61, 0.2);
+}
+
+.method-icon {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, var(--matrix-red), #cc0533);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--matrix-white);
+    font-size: 1.2rem;
+}
+
+.method-content h3 {
+    color: var(--matrix-white);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.method-content p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 8px;
+}
+
+.method-link {
+    color: var(--matrix-red);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all var(--transition-speed) ease;
+}
+
+.method-link:hover {
+    color: var(--matrix-white);
+    text-shadow: 0 0 10px var(--matrix-red-glow);
+}
+
+.method-note {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+/* Social Connect */
+.social-connect {
+    margin-bottom: 40px;
+}
+
+.social-title {
+    color: var(--matrix-white);
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.social-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--matrix-gray);
+    border-radius: 10px;
+    color: var(--matrix-white);
+    text-decoration: none;
+    transition: all var(--transition-speed) ease;
+    font-size: 0.9rem;
+}
+
+.social-link:hover {
+    border-color: var(--matrix-red);
+    color: var(--matrix-red);
+    background: rgba(255, 7, 61, 0.1);
+    transform: translateY(-2px);
+}
+
+.social-link i {
+    font-size: 1.2rem;
+}
+
+/* Availability Status */
+.availability-status {
+    padding: 25px;
+    background: rgba(0, 255, 65, 0.1);
+    border: 1px solid var(--matrix-green);
+    border-radius: 15px;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.status-dot.available {
+    background: var(--matrix-green);
+    box-shadow: 0 0 15px var(--matrix-green-glow);
+}
+
+.status-dot.available::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border: 2px solid var(--matrix-green);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: pulse 2s infinite;
+}
+
+.status-text {
+    color: var(--matrix-green);
+    font-weight: 600;
+}
+
+.status-description {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* FAQ Section */
+.faq-container {
+    max-width: 100%;
+}
+
+.faq-item {
+    background: rgba(26, 26, 26, 0.5);
+    border: 1px solid var(--matrix-gray);
+    border-radius: 15px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: all var(--transition-speed) ease;
+}
+
+.faq-item:hover {
+    border-color: var(--matrix-red);
+}
+
+.faq-question {
+    padding: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all var(--transition-speed) ease;
+}
+
+.faq-question:hover {
+    background: rgba(255, 7, 61, 0.1);
+}
+
+.faq-question i {
+    color: var(--matrix-red);
+    font-size: 1rem;
+    transition: transform var(--transition-speed) ease;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(90deg);
+}
+
+.faq-question h3 {
+    color: var(--matrix-white);
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: all var(--transition-speed) ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+}
+
+.faq-answer p {
+    padding: 0 25px 25px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .contact-form-container,
+    .contact-info-container {
+        margin-bottom: 30px;
+    }
+    
+    .contact-method {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .social-links {
+        grid-template-columns: 1fr;
+    }
+    
+    .faq-question {
+        padding: 20px;
+    }
+    
+    .faq-answer p {
+        padding: 0 20px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .contact-form-container {
+        padding: 25px;
+    }
+    
+    .form-title {
+        font-size: 1.5rem;
+    }
+    
+    .method-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Contact form handling
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = contactForm.querySelector('.submit-btn');
+    
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Add loading state
+        submitBtn.classList.add('loading');
+        submitBtn.disabled = true;
+        
+        const formData = new FormData(this);
+        
+        fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
+                contactForm.reset();
+                
+                // Reset form borders
+                document.querySelectorAll('.form-border').forEach(border => {
+                    border.style.width = '0';
+                });
+            } else {
+                showNotification('Error sending message. Please try again.', 'error');
+            }
+        })
+        .catch(error => {
+            showNotification('Error sending message. Please try again.', 'error');
+        })
+        .finally(() => {
+            submitBtn.classList.remove('loading');
+            submitBtn.disabled = false;
+        });
+    });
+    
+    // FAQ accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', function() {
+            const isActive = item.classList.contains('active');
+            
+            // Close all other items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+            
+            // Toggle current item
+            item.classList.toggle('active', !isActive);
+        });
+    });
+    
+    // Form input animations
+    const inputs = document.querySelectorAll('.matrix-input');
+    
+    inputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            this.parentElement.classList.add('focused');
+        });
+        
+        input.addEventListener('blur', function() {
+            if (!this.value) {
+                this.parentElement.classList.remove('focused');
+            }
+        });
+        
+        // Check if input has value on load
+        if (input.value) {
+            input.parentElement.classList.add('focused');
+        }
+    });
+});
+</script>
+{% endblock %}

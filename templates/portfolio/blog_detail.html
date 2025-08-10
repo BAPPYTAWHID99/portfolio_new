@@ -1,0 +1,502 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %}{{ post.title }} - Blog{% endblock %}
+
+{% block content %}
+<!-- Blog Post Header -->
+<section class="matrix-section blog-hero" style="padding-top: 120px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <div class="blog-header" data-aos="fade-up">
+                    <div class="blog-meta">
+                        <span class="blog-date">
+                            <i class="fas fa-calendar"></i>
+                            {{ post.created_at|date:"F d, Y" }}
+                        </span>
+                        <span class="blog-read-time">
+                            <i class="fas fa-clock"></i>
+                            8 min read
+                        </span>
+                    </div>
+                    
+                    <h1 class="blog-title">{{ post.title }}</h1>
+                    
+                    <div class="blog-actions">
+                        <a href="{% url 'portfolio:blog_list' %}" class="matrix-btn secondary">
+                            <i class="fas fa-arrow-left"></i> Back to Blog
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        {% if post.image %}
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="blog-featured-image" data-aos="fade-up" data-aos-delay="200">
+                        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Blog Content -->
+<section class="matrix-section blog-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <article class="blog-article" data-aos="fade-up">
+                    <div class="article-content">
+                        {{ post.content|linebreaks }}
+                    </div>
+                    
+                    <div class="article-footer">
+                        <div class="article-tags">
+                            <h4>Tags</h4>
+                            <div class="tags-list">
+                                <span class="tag">Technology</span>
+                                <span class="tag">Development</span>
+                                <span class="tag">Programming</span>
+                            </div>
+                        </div>
+                        
+                        <div class="article-share">
+                            <h4>Share This Post</h4>
+                            <div class="share-buttons">
+                                <a href="#" class="share-btn twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="share-btn linkedin">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="share-btn facebook">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                                <a href="#" class="share-btn copy-link">
+                                    <i class="fas fa-link"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Posts -->
+<section class="matrix-section related-posts">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Related Articles</h2>
+        <div class="row">
+            <div class="col-12 text-center">
+                <p class="text-muted">More articles coming soon...</p>
+                <a href="{% url 'portfolio:blog_list' %}" class="matrix-btn">
+                    <i class="fas fa-blog"></i> View All Posts
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Blog Detail Styles */
+.blog-hero {
+    background: linear-gradient(45deg, var(--matrix-black), var(--matrix-dark-gray));
+    position: relative;
+}
+
+.blog-header {
+    margin-bottom: 40px;
+}
+
+.blog-meta {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.blog-date,
+.blog-read-time {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.blog-date i,
+.blog-read-time i {
+    color: var(--matrix-red);
+}
+
+.blog-title {
+    color: var(--matrix-white);
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blog-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.matrix-btn.secondary {
+    background: transparent;
+    border: 1px solid var(--matrix-gray);
+    color: var(--matrix-white);
+}
+
+.matrix-btn.secondary:hover {
+    background: var(--matrix-white);
+    color: var(--matrix-black);
+    border-color: var(--matrix-white);
+}
+
+.blog-featured-image {
+    margin-top: 40px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.blog-featured-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, var(--matrix-red-glow), transparent);
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.blog-featured-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Article Content */
+.blog-article {
+    background: rgba(26, 26, 26, 0.95);
+    border: 1px solid var(--matrix-gray);
+    border-radius: 20px;
+    padding: 50px;
+    margin: 40px 0;
+    position: relative;
+}
+
+.blog-article::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--matrix-red), var(--matrix-green));
+    border-radius: 20px 20px 0 0;
+}
+
+.article-content {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.article-content p {
+    margin-bottom: 20px;
+}
+
+.article-content h2,
+.article-content h3,
+.article-content h4 {
+    color: var(--matrix-white);
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.article-content h2 {
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--matrix-red);
+    padding-bottom: 10px;
+}
+
+.article-content h3 {
+    font-size: 1.5rem;
+    color: var(--matrix-red);
+}
+
+.article-content h4 {
+    font-size: 1.3rem;
+}
+
+.article-content code {
+    background: var(--matrix-black);
+    color: var(--matrix-green);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    border: 1px solid var(--matrix-gray);
+}
+
+.article-content pre {
+    background: var(--matrix-black);
+    color: var(--matrix-green);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--matrix-red);
+    overflow-x: auto;
+    margin: 20px 0;
+    font-family: 'Courier New', monospace;
+}
+
+.article-content blockquote {
+    border-left: 4px solid var(--matrix-red);
+    padding-left: 20px;
+    margin: 20px 0;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 7, 61, 0.1);
+    padding: 15px 20px;
+    border-radius: 0 10px 10px 0;
+}
+
+/* Article Footer */
+.article-footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding-top: 30px;
+    border-top: 1px solid var(--matrix-gray);
+}
+
+.article-tags h4,
+.article-share h4 {
+    color: var(--matrix-white);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    background: var(--matrix-red);
+    color: var(--matrix-white);
+    padding: 6px 14px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.share-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.share-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all var(--transition-speed) ease;
+    border: 1px solid var(--matrix-gray);
+}
+
+.share-btn.twitter {
+    background: #1da1f2;
+    color: white;
+    border-color: #1da1f2;
+}
+
+.share-btn.linkedin {
+    background: #0077b5;
+    color: white;
+    border-color: #0077b5;
+}
+
+.share-btn.facebook {
+    background: #1877f2;
+    color: white;
+    border-color: #1877f2;
+}
+
+.share-btn.copy-link {
+    background: var(--matrix-gray);
+    color: var(--matrix-white);
+}
+
+.share-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Related Posts */
+.related-posts {
+    background: rgba(26, 26, 26, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .blog-title {
+        font-size: 2.2rem;
+    }
+    
+    .blog-meta {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .blog-article {
+        padding: 30px 25px;
+    }
+    
+    .article-footer {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .share-buttons {
+        justify-content: center;
+    }
+    
+    .tags-list {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .blog-title {
+        font-size: 1.8rem;
+    }
+    
+    .blog-article {
+        padding: 25px 20px;
+        margin: 20px 0;
+    }
+    
+    .article-content {
+        font-size: 1rem;
+    }
+    
+    .share-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
+/* Reading Progress Bar */
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 7, 61, 0.3);
+    z-index: 1000;
+}
+
+.reading-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--matrix-red), var(--matrix-green));
+    width: 0%;
+    transition: width 0.1s ease;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Reading Progress Bar
+    const progressBar = document.createElement('div');
+    progressBar.className = 'reading-progress';
+    progressBar.innerHTML = '<div class="reading-progress-fill"></div>';
+    document.body.appendChild(progressBar);
+    
+    const progressFill = progressBar.querySelector('.reading-progress-fill');
+    
+    window.addEventListener('scroll', function() {
+        const article = document.querySelector('.article-content');
+        if (article) {
+            const articleTop = article.offsetTop;
+            const articleHeight = article.offsetHeight;
+            const windowHeight = window.innerHeight;
+            const scrollTop = window.pageYOffset;
+            
+            const scrollProgress = Math.max(0, Math.min(100, 
+                ((scrollTop - articleTop + windowHeight * 0.2) / articleHeight) * 100
+            ));
+            
+            progressFill.style.width = scrollProgress + '%';
+        }
+    });
+    
+    // Copy link functionality
+    const copyLinkBtn = document.querySelector('.share-btn.copy-link');
+    if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                showNotification('Link copied to clipboard!', 'success');
+            });
+        });
+    }
+    
+    // Social share functionality
+    const twitterBtn = document.querySelector('.share-btn.twitter');
+    const linkedinBtn = document.querySelector('.share-btn.linkedin');
+    const facebookBtn = document.querySelector('.share-btn.facebook');
+    
+    if (twitterBtn) {
+        twitterBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+        });
+    }
+    
+    if (linkedinBtn) {
+        linkedinBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+        });
+    }
+    
+    if (facebookBtn) {
+        facebookBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        });
+    }
+});
+</script>
+{% endblock %}

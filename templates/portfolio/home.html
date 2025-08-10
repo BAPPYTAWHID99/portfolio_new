@@ -1,0 +1,371 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %}Home - Matrix Portfolio{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section" id="home">
+    <div class="container">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-7 order-lg-1 order-2">
+                <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="typing-container">
+                        <h1 class="hero-title typing-text">
+                            {% if config.site_title %}
+                                {{ config.site_title }}
+                            {% else %}
+                                BAPPY TAWHID
+                            {% endif %}
+                        </h1>
+                    </div>
+                    
+                    <p class="subtitle" data-aos="fade-up" data-aos-delay="800">
+                        {% if config.site_subtitle %}
+                            {{ config.site_subtitle }}
+                        {% else %}
+                            Software Engineer & Data Analyst
+                        {% endif %}
+                    </p>
+                    
+                    <div class="tagline" data-aos="fade-up" data-aos-delay="1200">
+                        <span class="matrix-text">> System.initialize();</span>
+                        <span class="matrix-text">> Loading professional_profile.exe...</span>
+                        <span class="matrix-text">> Authentication: SUCCESS</span>
+                        <span class="matrix-text highlight">> Welcome to the Digital Matrix</span>
+                    </div>
+                    
+                    <p class="description" data-aos="fade-up" data-aos-delay="1600">
+                        Architecting digital solutions that transform business landscapes. 
+                        Specializing in enterprise-grade financial systems, advanced data analytics, 
+                        and scalable web applications that drive innovation and efficiency.
+                    </p>
+                    
+                    <div class="hero-buttons" data-aos="fade-up" data-aos-delay="2000">
+                        <a href="{% url 'portfolio:projects' %}" class="matrix-btn">
+                            <i class="fas fa-rocket"></i> 
+                            Explore Projects
+                        </a>
+                        <a href="{% url 'portfolio:contact' %}" class="matrix-btn btn-outline">
+                            <i class="fas fa-paper-plane"></i> 
+                            Get In Touch
+                        </a>
+                        <a href="#" class="matrix-btn" onclick="downloadCV()">
+                            <i class="fas fa-download"></i> 
+                            Download CV
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-5 order-lg-2 order-1 text-center">
+                <div class="profile-section" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="profile-picture-container">
+                        <div class="matrix-border">
+                            <div class="profile-picture">
+                                <div class="profile-placeholder">
+                                    <i class="fas fa-user-astronaut"></i>
+                                    <div class="placeholder-text">Digital Avatar</div>
+                                </div>
+                                <div class="matrix-overlay">
+                                    <div class="scanning-line"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-stats" data-aos="fade-up" data-aos-delay="1200">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="stat-item glass">
+                                    <div class="stat-number counter" data-target="5">0</div>
+                                    <div class="stat-label">Years Experience</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-item glass">
+                                    <div class="stat-number counter" data-target="25">0</div>
+                                    <div class="stat-label">Projects Completed</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-item glass">
+                                    <div class="stat-number counter" data-target="15">0</div>
+                                    <div class="stat-label">Technologies Mastered</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Enhanced Scroll Indicator -->
+    <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="2500">
+        <div class="scroll-arrow">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div style="margin-top: 10px; color: var(--matrix-red); font-size: 0.9rem;">
+            Scroll to explore
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects Section -->
+<section class="matrix-section" id="featured-projects">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
+        <div class="row">
+            {% for project in featured_projects %}
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:200 }}">
+                <div class="project-card" data-category="{{ project.category }}">
+                    {% if project.image %}
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-image">
+                    {% else %}
+                        <div class="project-image-placeholder">
+                            <i class="fas fa-code"></i>
+                        </div>
+                    {% endif %}
+                    <div class="project-content">
+                        <h3 class="project-title">{{ project.title }}</h3>
+                        <p class="project-description">{{ project.short_description }}</p>
+                        <div class="project-tech">
+                            {% for tech in project.get_technologies_list %}
+                                <span class="tech-tag">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="project-links">
+                            <a href="{% url 'portfolio:project_detail' project.pk %}" class="matrix-btn me-2">
+                                <i class="fas fa-eye"></i> View
+                            </a>
+                            {% if project.demo_url %}
+                                <a href="{{ project.demo_url }}" target="_blank" class="matrix-btn me-2">
+                                    <i class="fas fa-external-link-alt"></i> Demo
+                                </a>
+                            {% endif %}
+                            {% if project.github_url %}
+                                <a href="{{ project.github_url }}" target="_blank" class="matrix-btn">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p class="text-muted">No featured projects yet. Check back soon!</p>
+            </div>
+            {% endfor %}
+        </div>
+        
+        {% if featured_projects %}
+        <div class="text-center mt-4" data-aos="fade-up">
+            <a href="{% url 'portfolio:projects' %}" class="matrix-btn">
+                <i class="fas fa-arrow-right"></i> View All Projects
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Quick About Section -->
+<section class="matrix-section" id="quick-about">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6" data-aos="fade-right">
+                <h2 class="section-title text-start">About Me</h2>
+                <p class="lead">
+                    {% if config.about_text %}
+                        {{ config.about_text|truncatewords:50 }}
+                    {% else %}
+                        I'm a passionate developer who thrives in the digital realm, crafting innovative solutions 
+                        that merge cutting-edge technology with user-centric design. With expertise spanning 
+                        full-stack development, I bring ideas to life through clean, efficient code.
+                    {% endif %}
+                </p>
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="counter" data-target="50">0</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="counter" data-target="3">0</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="counter" data-target="100">0</span>
+                        <span class="stat-label">Client Satisfaction</span>
+                    </div>
+                </div>
+                <a href="{% url 'portfolio:about' %}" class="matrix-btn">
+                    <i class="fas fa-user"></i> Learn More
+                </a>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="about-visual">
+                    <div class="code-snippet">
+                        <div class="code-header">
+                            <span class="code-title">developer.py</span>
+                        </div>
+                        <div class="code-content">
+                            <pre><code>class Developer:
+    def __init__(self):
+        self.name = "Portfolio Owner"
+        self.skills = ["Python", "Django", "JavaScript"]
+        self.passion = "Creating digital magic"
+    
+    def create_amazing_projects(self):
+        return "Turning ideas into reality"
+    
+    def collaborate(self):
+        return "Let's build something great!"</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Blog Posts -->
+<section class="matrix-section" id="latest-blog">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Latest Blog Posts</h2>
+        <div class="row">
+            <!-- Blog posts will be dynamically loaded here -->
+            <div class="col-12 text-center">
+                <p class="text-muted">Blog posts coming soon...</p>
+                <a href="{% url 'portfolio:blog_list' %}" class="matrix-btn">
+                    <i class="fas fa-blog"></i> Visit Blog
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Hero Section Enhancements */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--matrix-red);
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+}
+
+.scroll-arrow {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.scroll-arrow:hover {
+    transform: translateY(5px);
+    color: var(--matrix-white);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Project Image Placeholder */
+.project-image-placeholder {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(45deg, var(--matrix-black), var(--matrix-dark-gray));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--matrix-red);
+    font-size: 3rem;
+}
+
+/* Stats */
+.stats-row {
+    display: flex;
+    gap: 30px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.counter {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--matrix-red);
+    text-shadow: 0 0 10px var(--matrix-red-glow);
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 5px;
+}
+
+/* Code Snippet */
+.about-visual {
+    position: relative;
+}
+
+.code-snippet {
+    background: rgba(26, 26, 26, 0.9);
+    border: 1px solid var(--matrix-red);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 30px var(--matrix-red-glow);
+}
+
+.code-header {
+    background: var(--matrix-red);
+    padding: 10px 15px;
+    color: var(--matrix-white);
+    font-weight: 600;
+}
+
+.code-content {
+    padding: 20px;
+}
+
+.code-content pre {
+    margin: 0;
+    color: var(--matrix-green);
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .stats-row {
+        justify-content: center;
+    }
+    
+    .hero-buttons {
+        text-align: center;
+    }
+    
+    .matrix-btn {
+        margin: 5px;
+        display: inline-block;
+    }
+}
+</style>
+{% endblock %}

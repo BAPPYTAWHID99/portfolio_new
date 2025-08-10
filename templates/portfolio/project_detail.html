@@ -1,0 +1,418 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %}{{ project.title }} - Project Details{% endblock %}
+
+{% block content %}
+<!-- Project Header -->
+<section class="matrix-section project-hero" style="padding-top: 120px;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="project-header">
+                    <div class="project-category-badge">
+                        {{ project.get_category_display }}
+                    </div>
+                    <h1 class="project-title">{{ project.title }}</h1>
+                    <p class="project-description">{{ project.description|linebreaks }}</p>
+                    
+                    <div class="project-actions">
+                        {% if project.demo_url %}
+                            <a href="{{ project.demo_url }}" target="_blank" class="matrix-btn">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        {% endif %}
+                        {% if project.github_url %}
+                            <a href="{{ project.github_url }}" target="_blank" class="matrix-btn">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        {% endif %}
+                        <a href="{% url 'portfolio:projects' %}" class="matrix-btn secondary">
+                            <i class="fas fa-arrow-left"></i> Back to Projects
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="project-image-container">
+                    {% if project.image %}
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-main-image">
+                    {% else %}
+                        <div class="project-image-placeholder">
+                            <i class="fas fa-code"></i>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Project Details -->
+<section class="matrix-section project-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="project-content">
+                    <h2 class="section-subtitle">Project Overview</h2>
+                    <div class="content-text">
+                        {{ project.description|linebreaks }}
+                    </div>
+                    
+                    <div class="project-features">
+                        <h3>Key Features</h3>
+                        <ul class="features-list">
+                            <li>Responsive design for all devices</li>
+                            <li>Modern and intuitive user interface</li>
+                            <li>Optimized performance</li>
+                            <li>Clean and maintainable code</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="project-sidebar">
+                    <div class="project-info-card">
+                        <h3>Project Information</h3>
+                        
+                        <div class="info-item">
+                            <span class="info-label">Category</span>
+                            <span class="info-value">{{ project.get_category_display }}</span>
+                        </div>
+                        
+                        <div class="info-item">
+                            <span class="info-label">Created</span>
+                            <span class="info-value">{{ project.created_at|date:"M Y" }}</span>
+                        </div>
+                        
+                        {% if project.demo_url %}
+                            <div class="info-item">
+                                <span class="info-label">Demo</span>
+                                <a href="{{ project.demo_url }}" target="_blank" class="info-link">
+                                    View Live Site <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        {% endif %}
+                        
+                        {% if project.github_url %}
+                            <div class="info-item">
+                                <span class="info-label">Repository</span>
+                                <a href="{{ project.github_url }}" target="_blank" class="info-link">
+                                    GitHub <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="technologies-card">
+                        <h3>Technologies Used</h3>
+                        <div class="tech-stack">
+                            {% for tech in project.get_technologies_list %}
+                                <span class="tech-badge">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Projects -->
+<section class="matrix-section related-projects">
+    <div class="container">
+        <h2 class="section-title">Related Projects</h2>
+        <div class="row">
+            <!-- You can add logic here to show related projects -->
+            <div class="col-12 text-center">
+                <p class="text-muted">More projects coming soon...</p>
+                <a href="{% url 'portfolio:projects' %}" class="matrix-btn">
+                    <i class="fas fa-code"></i> View All Projects
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Project Detail Styles */
+.project-hero {
+    background: linear-gradient(45deg, var(--matrix-black), var(--matrix-dark-gray));
+    position: relative;
+}
+
+.project-category-badge {
+    background: var(--matrix-red);
+    color: var(--matrix-white);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px var(--matrix-red-glow);
+}
+
+.project-title {
+    color: var(--matrix-white);
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+.project-description {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.project-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.matrix-btn.secondary {
+    background: transparent;
+    border: 1px solid var(--matrix-gray);
+    color: var(--matrix-white);
+}
+
+.matrix-btn.secondary:hover {
+    background: var(--matrix-white);
+    color: var(--matrix-black);
+    border-color: var(--matrix-white);
+}
+
+.project-image-container {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.project-main-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform var(--transition-speed) ease;
+}
+
+.project-image-container:hover .project-main-image {
+    transform: scale(1.05);
+}
+
+.project-image-placeholder {
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(45deg, var(--matrix-black), var(--matrix-dark-gray));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--matrix-red);
+    font-size: 4rem;
+    border: 1px solid var(--matrix-gray);
+    border-radius: 15px;
+}
+
+/* Project Content */
+.project-content {
+    margin-bottom: 40px;
+}
+
+.section-subtitle {
+    color: var(--matrix-white);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.section-subtitle::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--matrix-red);
+    border-radius: 2px;
+}
+
+.content-text {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.project-features h3 {
+    color: var(--matrix-white);
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+}
+
+.features-list li {
+    color: rgba(255, 255, 255, 0.8);
+    padding: 8px 0;
+    position: relative;
+    padding-left: 25px;
+}
+
+.features-list li::before {
+    content: '▶';
+    color: var(--matrix-red);
+    position: absolute;
+    left: 0;
+    top: 8px;
+}
+
+/* Sidebar */
+.project-sidebar {
+    position: sticky;
+    top: 100px;
+}
+
+.project-info-card,
+.technologies-card {
+    background: rgba(26, 26, 26, 0.95);
+    border: 1px solid var(--matrix-gray);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.project-info-card h3,
+.technologies-card h3 {
+    color: var(--matrix-white);
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.project-info-card h3::before {
+    content: '📋';
+    font-size: 1rem;
+}
+
+.technologies-card h3::before {
+    content: '⚙️';
+    font-size: 1rem;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--matrix-gray);
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+.info-value {
+    color: var(--matrix-white);
+    font-weight: 600;
+}
+
+.info-link {
+    color: var(--matrix-red);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color var(--transition-speed) ease;
+}
+
+.info-link:hover {
+    color: var(--matrix-white);
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tech-badge {
+    background: linear-gradient(45deg, var(--matrix-red), #cc0533);
+    color: var(--matrix-white);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 0 10px var(--matrix-red-glow);
+}
+
+/* Related Projects */
+.related-projects {
+    background: rgba(26, 26, 26, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .project-title {
+        font-size: 2.2rem;
+    }
+    
+    .project-description {
+        font-size: 1.1rem;
+    }
+    
+    .project-actions {
+        justify-content: center;
+    }
+    
+    .project-sidebar {
+        position: static;
+        margin-top: 40px;
+    }
+    
+    .tech-stack {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .project-title {
+        font-size: 1.8rem;
+    }
+    
+    .project-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .matrix-btn {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+    
+    .project-info-card,
+    .technologies-card {
+        padding: 20px;
+    }
+}
+</style>
+{% endblock %}
