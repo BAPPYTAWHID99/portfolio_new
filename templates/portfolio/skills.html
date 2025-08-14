@@ -8,9 +8,9 @@
 <section class="matrix-section" id="skills-header" style="padding-top: 120px;">
     <div class="container">
         <div class="text-center">
-            <h1 class="section-title" data-aos="fade-up">Technical Arsenal</h1>
+            <h1 class="section-title" data-aos="fade-up">Technical Skills</h1>
             <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
-                A comprehensive overview of my technical skills and expertise in various technologies
+                A comprehensive overview of my programming languages, frameworks, databases, and tools mastered through professional experience
             </p>
         </div>
     </div>
@@ -19,88 +19,710 @@
 <!-- Skills Grid -->
 <section class="matrix-section" id="skills-grid">
     <div class="container">
-        {% if skills_by_category %}
-            {% for category, skills in skills_by_category.items %}
-                <div class="skill-category-section" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:200 }}">
-                    <div class="category-header">
-                        <h2 class="category-title">
-                            {% if category == 'frontend' %}
-                                <i class="fas fa-palette"></i> Frontend Development
-                            {% elif category == 'backend' %}
-                                <i class="fas fa-server"></i> Backend Development
-                            {% elif category == 'database' %}
-                                <i class="fas fa-database"></i> Database Management
-                            {% elif category == 'devops' %}
-                                <i class="fas fa-cloud"></i> DevOps & Cloud
-                            {% elif category == 'mobile' %}
-                                <i class="fas fa-mobile-alt"></i> Mobile Development
-                            {% elif category == 'ai' %}
-                                <i class="fas fa-brain"></i> AI & Machine Learning
-                            {% else %}
-                                <i class="fas fa-cogs"></i> {{ category|capfirst }}
-                            {% endif %}
-                        </h2>
-                        <div class="category-line"></div>
+        <!-- Programming Languages -->
+        <div class="skill-category-section" data-aos="fade-up" data-aos-delay="200">
+            <div class="category-header">
+                <h2 class="category-title">
+                    <i class="fas fa-code"></i> Programming Languages
+                </h2>
+                <div class="category-line"></div>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="skill-icon">
+                        <i class="fab fa-java"></i>
                     </div>
-                    
-                    <div class="skills-grid">
-                        {% for skill in skills %}
-                            <div class="skill-card" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:300 }}">
-                                <div class="skill-icon">
-                                    {% if skill.icon_class %}
-                                        <i class="{{ skill.icon_class }}"></i>
-                                    {% else %}
-                                        <i class="fas fa-code"></i>
-                                    {% endif %}
-                                </div>
-                                
-                                <div class="skill-info">
-                                    <h3 class="skill-name">{{ skill.name }}</h3>
-                                    <div class="skill-level">
-                                        <span class="level-text">{{ skill.proficiency }}%</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="skill-progress-container">
-                                    <div class="skill-progress-track">
-                                        <div class="skill-progress-fill" 
-                                             data-percentage="{{ skill.proficiency }}"
-                                             style="--skill-width: {{ skill.proficiency }}%;">
-                                            <div class="progress-glow"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="skill-overlay">
-                                    <div class="skill-details">
-                                        <p>Proficiency Level</p>
-                                        <div class="proficiency-indicator">
-                                            {% if skill.proficiency >= 90 %}
-                                                <span class="level expert">Expert</span>
-                                            {% elif skill.proficiency >= 75 %}
-                                                <span class="level advanced">Advanced</span>
-                                            {% elif skill.proficiency >= 50 %}
-                                                <span class="level intermediate">Intermediate</span>
-                                            {% else %}
-                                                <span class="level beginner">Beginner</span>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">Java</h3>
+                        <div class="skill-level">
+                            <span class="level-text">90%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="90" style="--skill-width: 90%;">
+                                <div class="progress-glow"></div>
                             </div>
-                        {% endfor %}
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level expert">Expert</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            {% endfor %}
-        {% else %}
-            <div class="no-skills" data-aos="fade-up">
-                <div class="no-skills-content">
-                    <i class="fas fa-tools"></i>
-                    <h3>Skills Coming Soon</h3>
-                    <p>My technical skills and expertise will be showcased here. Check back soon!</p>
+
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">Groovy</h3>
+                        <div class="skill-level">
+                            <span class="level-text">85%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="85" style="--skill-width: 85%;">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level advanced">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="skill-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">Python</h3>
+                        <div class="skill-level">
+                            <span class="level-text">88%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="88" style="--skill-width: 88%;">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level advanced">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="skill-icon">
+                        <i class="fab fa-js-square"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">JavaScript</h3>
+                        <div class="skill-level">
+                            <span class="level-text">80%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="80" style="--skill-width: 80%;">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level advanced">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">C#</h3>
+                        <div class="skill-level">
+                            <span class="level-text">75%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="75" style="--skill-width: 75%;">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level advanced">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="800">
+                    <div class="skill-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">R</h3>
+                        <div class="skill-level">
+                            <span class="level-text">70%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="70" style="--skill-width: 70%;">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level intermediate">Intermediate</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        {% endif %}
+        </div>
+
+        <!-- Web Technologies -->
+        <div class="skill-category-section" data-aos="fade-up" data-aos-delay="900">
+            <div class="category-header">
+                <h2 class="category-title">
+                    <i class="fas fa-globe"></i> Web Technologies
+                </h2>
+                <div class="category-line"></div>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="1000">
+                    <div class="skill-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">HTML5</h3>
+                        <div class="skill-level">
+                            <span class="level-text">90%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="90" style="--skill-width: 90%;">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level expert">Expert</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="1100">
+                    <div class="skill-icon">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">CSS3</h3>
+                        <div class="skill-level">
+                            <span class="level-text">85%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="85" style="--skill-width: 85%;">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level advanced">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Frameworks & Libraries -->
+        <div class="skill-category-section" data-aos="fade-up" data-aos-delay="1200">
+            <div class="category-header">
+                <h2 class="category-title">
+                    <i class="fas fa-layer-group"></i> Frameworks & Libraries
+                </h2>
+                <div class="category-line"></div>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="1300">
+                    <div class="skill-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">Grails 3x</h3>
+                        <div class="skill-level">
+                            <span class="level-text">90%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="90" style="--skill-width: 90%;">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level expert">Expert</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="1400">
+                    <div class="skill-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">Django</h3>
+                        <div class="skill-level">
+                            <span class="level-text">85%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="85" style="--skill-width: 85%;">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level advanced">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="1500">
+                    <div class="skill-icon">
+                        <i class="fab fa-bootstrap"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">Bootstrap 5x</h3>
+                        <div class="skill-level">
+                            <span class="level-text">85%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="85" style="--skill-width: 85%;">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level advanced">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="1600">
+                    <div class="skill-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">Jasper Studio</h3>
+                        <div class="skill-level">
+                            <span class="level-text">75%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="75" style="--skill-width: 75%;">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level advanced">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Architectures & Patterns -->
+        <div class="skill-category-section" data-aos="fade-up" data-aos-delay="1700">
+            <div class="category-header">
+                <h2 class="category-title">
+                    <i class="fas fa-sitemap"></i> Architectures & Patterns
+                </h2>
+                <div class="category-line"></div>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="1800">
+                    <div class="skill-icon">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">Microservices</h3>
+                        <div class="skill-level">
+                            <span class="level-text">80%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="80" style="--skill-width: 80%;">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level advanced">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="1900">
+                    <div class="skill-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">RESTful APIs</h3>
+                        <div class="skill-level">
+                            <span class="level-text">85%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="85" style="--skill-width: 85%;">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level advanced">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="2000">
+                    <div class="skill-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">MVC Pattern</h3>
+                        <div class="skill-level">
+                            <span class="level-text">90%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="90" style="--skill-width: 90%;">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level expert">Expert</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Databases -->
+        <div class="skill-category-section" data-aos="fade-up" data-aos-delay="2100">
+            <div class="category-header">
+                <h2 class="category-title">
+                    <i class="fas fa-database"></i> Database Management
+                </h2>
+                <div class="category-line"></div>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="2200">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">MySQL</h3>
+                        <div class="skill-level">
+                            <span class="level-text">85%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="85" style="--skill-width: 85%;">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level advanced">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="2300">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">PostgreSQL</h3>
+                        <div class="skill-level">
+                            <span class="level-text">80%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="80" style="--skill-width: 80%;">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level advanced">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="2400">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">Oracle Database</h3>
+                        <div class="skill-level">
+                            <span class="level-text">82%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="82" style="--skill-width: 82%;">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level advanced">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DevOps & Tools -->
+        <div class="skill-category-section" data-aos="fade-up" data-aos-delay="2500">
+            <div class="category-header">
+                <h2 class="category-title">
+                    <i class="fas fa-tools"></i> DevOps & Tools
+                </h2>
+                <div class="category-line"></div>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="2600">
+                    <div class="skill-icon">
+                        <i class="fab fa-git-alt"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">Git & GitHub</h3>
+                        <div class="skill-level">
+                            <span class="level-text">90%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="90" style="--skill-width: 90%;">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level expert">Expert</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="2700">
+                    <div class="skill-icon">
+                        <i class="fab fa-docker"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">Docker</h3>
+                        <div class="skill-level">
+                            <span class="level-text">75%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="75" style="--skill-width: 75%;">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level advanced">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Core Concepts -->
+        <div class="skill-category-section" data-aos="fade-up" data-aos-delay="2800">
+            <div class="category-header">
+                <h2 class="category-title">
+                    <i class="fas fa-brain"></i> Core Programming Concepts
+                </h2>
+                <div class="category-line"></div>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="2900">
+                    <div class="skill-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">Data Structures & Algorithms</h3>
+                        <div class="skill-level">
+                            <span class="level-text">85%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="85" style="--skill-width: 85%;">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level advanced">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="3000">
+                    <div class="skill-icon">
+                        <i class="fas fa-object-group"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">Object Oriented Programming</h3>
+                        <div class="skill-level">
+                            <span class="level-text">90%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="90" style="--skill-width: 90%;">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level expert">Expert</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="3100">
+                    <div class="skill-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">Object Relational Mapping</h3>
+                        <div class="skill-level">
+                            <span class="level-text">85%</span>
+                        </div>
+                    </div>
+                    <div class="skill-progress-container">
+                        <div class="skill-progress-track">
+                            <div class="skill-progress-fill" data-percentage="85" style="--skill-width: 85%;">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-overlay">
+                        <div class="skill-details">
+                            <p>Proficiency Level</p>
+                            <div class="proficiency-indicator">
+                                <span class="level advanced">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -110,20 +732,21 @@
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <div class="summary-card" data-aos="fade-up">
-                    <h2 class="summary-title">Continuous Learning Journey</h2>
+                    <h2 class="summary-title">Professional Growth Journey</h2>
                     <p class="summary-text">
-                        In the ever-evolving world of technology, I believe in continuous learning and adaptation. 
-                        These skills represent my current expertise, but I'm always exploring new technologies 
-                        and pushing the boundaries of what's possible.
+                        As a Software Engineer with 2 years of professional experience at Walton Digi-Tech Industries Ltd., 
+                        I have continuously evolved my technical skills while working on real-world projects. My expertise 
+                        spans across full-stack development, from backend services to user interfaces, 
+                        always staying current with industry best practices and emerging technologies.
                     </p>
                     
                     <div class="learning-stats">
                         <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
                             <div class="stat-icon">
-                                <i class="fas fa-book"></i>
+                                <i class="fas fa-code"></i>
                             </div>
                             <div class="stat-content">
-                                <span class="stat-number counter" data-target="15">0</span>
+                                <span class="stat-number counter" data-target="12">0</span>
                                 <span class="stat-label">Technologies Mastered</span>
                             </div>
                         </div>
@@ -133,7 +756,7 @@
                                 <i class="fas fa-certificate"></i>
                             </div>
                             <div class="stat-content">
-                                <span class="stat-number counter" data-target="5">0</span>
+                                <span class="stat-number counter" data-target="6">0</span>
                                 <span class="stat-label">Certifications</span>
                             </div>
                         </div>
@@ -143,8 +766,8 @@
                                 <i class="fas fa-clock"></i>
                             </div>
                             <div class="stat-content">
-                                <span class="stat-number counter" data-target="1000">0</span>
-                                <span class="stat-label">Hours Learning</span>
+                                <span class="stat-number counter" data-target="2">0</span>
+                                <span class="stat-label">Years Experience</span>
                             </div>
                         </div>
                     </div>

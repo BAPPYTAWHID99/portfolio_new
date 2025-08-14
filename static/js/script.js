@@ -395,19 +395,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typingElement) {
         const originalText = typingElement.textContent.trim();
         
-        // Create properly spaced version
-        let spacedText = '';
-        for (let i = 0; i < originalText.length; i++) {
-            const char = originalText[i];
-            if (char === ' ') {
-                spacedText += '    '; // 4 spaces between words
-            } else {
-                spacedText += char;
-                if (i < originalText.length - 1 && originalText[i + 1] !== ' ') {
-                    spacedText += ' '; // Single space after each letter
-                }
-            }
-        }
+        // Use original text without extra spacing to prevent overflow
+        const spacedText = originalText;
         
         typingElement.textContent = '';
         typingElement.style.borderRight = 'none';
@@ -417,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (i < spacedText.length) {
                 typingElement.textContent += spacedText.charAt(i);
                 i++;
-                setTimeout(typeWriter, 80);
+                setTimeout(typeWriter, 100); // Slightly slower for better visibility
             } else {
                 setTimeout(() => {
                     typingElement.style.borderRight = '3px solid var(--matrix-red)';

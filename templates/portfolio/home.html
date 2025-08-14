@@ -1,7 +1,7 @@
 {% extends 'portfolio/base.html' %}
 {% load static %}
 
-{% block title %}Home - Matrix Portfolio{% endblock %}
+{% block title %}Home - Bappy Tawhid | Software Engineer{% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
@@ -24,25 +24,26 @@
                         {% if config.site_subtitle %}
                             {{ config.site_subtitle }}
                         {% else %}
-                            Software Engineer & Data Analyst
+                            Software Engineer at Walton Digi-Tech Industries Ltd
                         {% endif %}
                     </p>
                     
                     <div class="tagline" data-aos="fade-up" data-aos-delay="1200">
                         <span class="matrix-text">> System.initialize();</span>
                         <span class="matrix-text">> Loading professional_profile.exe...</span>
-                        <span class="matrix-text">> Authentication: SUCCESS</span>
-                        <span class="matrix-text highlight">> Welcome to the Digital Matrix</span>
+                        <span class="matrix-text">> ERP | POS | MIS Systems Developer</span>
+                        <span class="matrix-text highlight">> Welcome to the Digital Profile</span>
                     </div>
                     
                     <p class="description" data-aos="fade-up" data-aos-delay="1600">
-                        Architecting digital solutions that transform business landscapes. 
-                        Specializing in enterprise-grade financial systems, advanced data analytics, 
-                        and scalable web applications that drive innovation and efficiency.
+                        With over two years of dedicated experience in Software Engineering, 
+                        I specialize in Enterprise Resource Planning (ERP) and Point of Sale (POS) systems development. 
+                        Expert in database management, MIS reporting, data analysis, and crafting business software 
+                        solutions with proven expertise in Groovy, Grails, Java, Python, and Oracle databases.
                     </p>
                     
                     <div class="hero-buttons" data-aos="fade-up" data-aos-delay="2000">
-                        <a href="{% url 'portfolio:projects' %}" class="matrix-btn">
+                        <a href="{% url 'portfolio:projects' %}" class="matrix-btn btn-outline">
                             <i class="fas fa-rocket"></i> 
                             Explore Projects
                         </a>
@@ -50,7 +51,7 @@
                             <i class="fas fa-paper-plane"></i> 
                             Get In Touch
                         </a>
-                        <a href="#" class="matrix-btn" onclick="downloadCV()">
+                        <a href="#" class="matrix-btn btn-outline" onclick="downloadCV()">
                             <i class="fas fa-download"></i> 
                             Download CV
                         </a>
@@ -63,9 +64,12 @@
                     <div class="profile-picture-container">
                         <div class="matrix-border">
                             <div class="profile-picture">
-                                <div class="profile-placeholder">
+                                <img src="{% static 'images/profile.jpg' %}" alt="Bappy Tawhid" class="profile-image" 
+                                     onerror="console.log('Image failed to load'); this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                     onload="console.log('Image loaded successfully');">
+                                <div class="profile-placeholder" style="display: none;">
                                     <i class="fas fa-user-astronaut"></i>
-                                    <div class="placeholder-text">Digital Avatar</div>
+                                    <div class="placeholder-text">Profile Image</div>
                                 </div>
                                 <div class="matrix-overlay">
                                     <div class="scanning-line"></div>
@@ -78,20 +82,20 @@
                         <div class="row">
                             <div class="col-4">
                                 <div class="stat-item glass">
-                                    <div class="stat-number counter" data-target="5">0</div>
+                                    <div class="stat-number counter" data-target="2">0</div>
                                     <div class="stat-label">Years Experience</div>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="stat-item glass">
-                                    <div class="stat-number counter" data-target="25">0</div>
-                                    <div class="stat-label">Projects Completed</div>
+                                    <div class="stat-number counter" data-target="8">0</div>
+                                    <div class="stat-label">Major Projects</div>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="stat-item glass">
-                                    <div class="stat-number counter" data-target="15">0</div>
-                                    <div class="stat-label">Technologies Mastered</div>
+                                    <div class="stat-number counter" data-target="12">0</div>
+                                    <div class="stat-label">Technologies</div>
                                 </div>
                             </div>
                         </div>
@@ -116,40 +120,43 @@
 <section class="matrix-section" id="featured-projects">
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
-        <div class="row">
+        <div class="projects-grid" id="featured-projects-grid">
             {% for project in featured_projects %}
-            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:200 }}">
-                <div class="project-card" data-category="{{ project.category }}">
+            <div class="project-card" data-category="{{ project.category }}" data-aos="zoom-in" data-aos-delay="{{ forloop.counter|add:100 }}">
+                <div class="project-image">
                     {% if project.image %}
-                        <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-image">
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}">
                     {% else %}
                         <div class="project-image-placeholder">
                             <i class="fas fa-code"></i>
                         </div>
                     {% endif %}
-                    <div class="project-content">
-                        <h3 class="project-title">{{ project.title }}</h3>
-                        <p class="project-description">{{ project.short_description }}</p>
-                        <div class="project-tech">
-                            {% for tech in project.get_technologies_list %}
-                                <span class="tech-tag">{{ tech }}</span>
-                            {% endfor %}
-                        </div>
+                    <div class="project-overlay">
                         <div class="project-links">
-                            <a href="{% url 'portfolio:project_detail' project.pk %}" class="matrix-btn me-2">
-                                <i class="fas fa-eye"></i> View
+                            <a href="{% url 'portfolio:project_detail' project.pk %}" class="project-link" data-tooltip="View Details">
+                                <i class="fas fa-eye"></i>
                             </a>
                             {% if project.demo_url %}
-                                <a href="{{ project.demo_url }}" target="_blank" class="matrix-btn me-2">
-                                    <i class="fas fa-external-link-alt"></i> Demo
+                                <a href="{{ project.demo_url }}" target="_blank" class="project-link" data-tooltip="Live Demo">
+                                    <i class="fas fa-external-link-alt"></i>
                                 </a>
                             {% endif %}
                             {% if project.github_url %}
-                                <a href="{{ project.github_url }}" target="_blank" class="matrix-btn">
-                                    <i class="fab fa-github"></i> Code
+                                <a href="{{ project.github_url }}" target="_blank" class="project-link" data-tooltip="Source Code">
+                                    <i class="fab fa-github"></i>
                                 </a>
                             {% endif %}
                         </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-category">{{ project.category|title }}</div>
+                    <h3 class="project-title">{{ project.title }}</h3>
+                    <p class="project-description">{{ project.short_description }}</p>
+                    <div class="project-tech">
+                        {% for tech in project.get_technologies_list %}
+                            <span class="tech-tag">{{ tech }}</span>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -180,23 +187,24 @@
                     {% if config.about_text %}
                         {{ config.about_text|truncatewords:50 }}
                     {% else %}
-                        I'm a passionate developer who thrives in the digital realm, crafting innovative solutions 
-                        that merge cutting-edge technology with user-centric design. With expertise spanning 
-                        full-stack development, I bring ideas to life through clean, efficient code.
+                        I'm a passionate Software Engineer at Walton Digi-Tech Industries Ltd with over 1.5 years 
+                        of specialized experience in ERP and POS systems development. I excel in developing core 
+                        business applications including Provident Fund systems, Profit Participation Fund systems, 
+                        and VAT applications using Groovy, Grails, Java, Python, and Oracle databases.
                     {% endif %}
                 </p>
                 <div class="stats-row">
                     <div class="stat-item">
-                        <span class="counter" data-target="50">0</span>
-                        <span class="stat-label">Projects Completed</span>
+                        <span class="counter" data-target="8">0</span>
+                        <span class="stat-label">Major Projects</span>
                     </div>
                     <div class="stat-item">
-                        <span class="counter" data-target="3">0</span>
+                        <span class="counter" data-target="2">0</span>
                         <span class="stat-label">Years Experience</span>
                     </div>
                     <div class="stat-item">
-                        <span class="counter" data-target="100">0</span>
-                        <span class="stat-label">Client Satisfaction</span>
+                        <span class="counter" data-target="98">0</span>
+                        <span class="stat-label">Success Rate</span>
                     </div>
                 </div>
                 <a href="{% url 'portfolio:about' %}" class="matrix-btn">
@@ -210,17 +218,20 @@
                             <span class="code-title">developer.py</span>
                         </div>
                         <div class="code-content">
-                            <pre><code>class Developer:
+                            <pre><code>class SoftwareEngineer:
     def __init__(self):
-        self.name = "Portfolio Owner"
-        self.skills = ["Python", "Django", "JavaScript"]
-        self.passion = "Creating digital magic"
+        self.name = "Bappy Tawhid"
+        self.position = "Software Engineer"
+        self.company = "Walton Digi-Tech Industries Ltd"
+        self.skills = ["Java", "Python", "Groovy", "Grails"]
+        self.databases = ["Oracle 19c", "MySQL", "PostgreSQL"]
+        self.expertise = ["ERP Systems", "POS Development", "MIS Reporting"]
     
-    def create_amazing_projects(self):
-        return "Turning ideas into reality"
+    def develop_enterprise_solutions(self):
+        return "Building robust ERP & POS systems"
     
-    def collaborate(self):
-        return "Let's build something great!"</code></pre>
+    def optimize_business_processes(self):
+        return "Streamlining operations with technology"</code></pre>
                         </div>
                     </div>
                 </div>
@@ -232,13 +243,13 @@
 <!-- Latest Blog Posts -->
 <section class="matrix-section" id="latest-blog">
     <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Latest Blog Posts</h2>
+        <h2 class="section-title" data-aos="fade-up">Awards and Certifications</h2>
         <div class="row">
             <!-- Blog posts will be dynamically loaded here -->
             <div class="col-12 text-center">
                 <p class="text-muted">Blog posts coming soon...</p>
                 <a href="{% url 'portfolio:blog_list' %}" class="matrix-btn">
-                    <i class="fas fa-blog"></i> Visit Blog
+                    <i class="fas fa-award"></i> Visit
                 </a>
             </div>
         </div>
@@ -291,6 +302,166 @@
     justify-content: center;
     color: var(--matrix-red);
     font-size: 3rem;
+}
+
+/* Featured Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 255, 0, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.project-card:hover {
+    background: rgba(0, 255, 0, 0.05);
+    border-color: rgba(0, 255, 0, 0.3);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 255, 0, 0.2);
+}
+
+.project-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.1);
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.project-link {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 255, 0, 0.2);
+    border: 1px solid var(--matrix-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--matrix-green);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.project-link:hover {
+    background: var(--matrix-green);
+    color: black;
+    transform: scale(1.1);
+}
+
+.project-link::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: var(--matrix-green);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.project-link:hover::after {
+    opacity: 1;
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-category {
+    background: linear-gradient(45deg, var(--matrix-red), #ff6b35);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.project-title {
+    color: var(--matrix-green);
+    margin-bottom: 0.8rem;
+    font-family: var(--n-dot-font);
+    font-size: 1.3rem;
+}
+
+.project-description {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tech-tag {
+    background: #00FF00;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    color: black;
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-family: var(--n-dot-font);
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
 }
 
 /* Stats */

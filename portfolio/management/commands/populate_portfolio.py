@@ -77,6 +77,49 @@ Processing thousands of transactions daily, this system serves as the backbone f
                 'featured': True,
             },
             {
+                'title': 'PAI PAI ERP System',
+                'short_description': 'Complete Enterprise Resource Planning system with comprehensive business modules for finance, HR, manufacturing, and operations.',
+                'description': '''🏭 PAI PAI ERP - Complete Enterprise Resource Planning Solution
+
+A comprehensive Enterprise Resource Planning (ERP) system designed to manage all aspects of business operations from finance and HR to manufacturing and supply chain management.
+
+🚀 Core Modules:
+• Financial Management - General ledger, accounts payable/receivable, budgeting
+• Human Resources - Employee management, payroll, attendance, performance tracking
+• Manufacturing - Production planning, work orders, bill of materials, quality control
+• Supply Chain - Procurement, vendor management, purchase orders, contracts
+• Inventory Management - Stock control, warehouse management, asset tracking
+• Customer Relationship Management - Lead tracking, sales pipeline, customer service
+• Business Intelligence - Real-time dashboards, advanced analytics, custom reports
+
+💡 Advanced Features:
+• Multi-company and multi-currency support
+• Workflow automation and approval processes
+• Role-based security with granular permissions
+• Integration with external systems via REST APIs
+• Mobile-responsive interface for remote access
+• Advanced reporting with drill-down capabilities
+• Automated notifications and alerts
+
+🔧 Technical Architecture:
+• Microservices-based architecture for scalability
+• Cloud-ready deployment with containerization
+• Real-time data processing and synchronization
+• Advanced caching for optimal performance
+• Automated backup and disaster recovery
+• RESTful API for third-party integrations
+
+📊 Business Impact:
+• Streamlined business processes across all departments
+• Reduced operational costs by 35%
+• Improved data accuracy and real-time visibility
+• Enhanced decision-making with comprehensive analytics
+• Increased productivity through automation''',
+                'category': 'web',
+                'technologies': 'Spring Boot, Grails, Java, Groovy, Oracle Database, Microservices, REST APIs, Business Intelligence',
+                'featured': True,
+            },
+            {
                 'title': 'Walton Digi Provident Fund System',
                 'short_description': 'Autonomous financial management system with core banking integration for provident fund operations.',
                 'description': '''💰 Provident Fund Management System

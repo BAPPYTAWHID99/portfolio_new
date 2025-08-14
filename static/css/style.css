@@ -12,7 +12,7 @@
     --matrix-accent-glow: #00ffff55;
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.1);
-    --n-dot-font: 'DotGothic16', monospace;
+    --n-dot-font: 'ndot57', monospace;
     --transition-speed: 0.4s;
     --box-shadow: 0 8px 32px rgba(0, 255, 0, 0.1);
     --glow-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
@@ -291,7 +291,6 @@ body {
     padding: 8px;
     background: linear-gradient(45deg, var(--matrix-red), var(--matrix-accent), var(--matrix-green));
     border-radius: 50%;
-    animation: rotateBorder 4s linear infinite;
     box-shadow: var(--glow-shadow);
 }
 
@@ -304,6 +303,22 @@ body {
     background: linear-gradient(135deg, var(--matrix-dark-gray), var(--matrix-gray));
     border: 3px solid var(--matrix-black);
     box-shadow: inset 0 0 50px rgba(0, 255, 0, 0.1);
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    filter: grayscale(100%) contrast(1.2) brightness(0.9);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-image:hover {
+    filter: grayscale(70%) contrast(1.1) brightness(1.1);
+    transform: scale(1.02);
 }
 
 .profile-placeholder {
@@ -342,16 +357,35 @@ body {
     background: linear-gradient(
         45deg,
         transparent 30%,
-        var(--matrix-red-glow) 50%,
+        rgba(255, 7, 61, 0.2) 50%,
         transparent 70%
     );
     opacity: 0;
     transition: all var(--transition-speed) ease;
     border-radius: 50%;
+    z-index: 2;
 }
 
 .profile-picture:hover .matrix-overlay {
     opacity: 1;
+}
+
+.profile-picture::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 255, 0, 0.1) 0%,
+        transparent 30%,
+        rgba(255, 7, 61, 0.1) 100%
+    );
+    border-radius: 50%;
+    z-index: 2;
+    pointer-events: none;
 }
 
 .scanning-line {
@@ -504,7 +538,7 @@ body {
 
 .tech-tag {
     background: var(--matrix-red);
-    color: var(--matrix-black);
+    color: black;
     padding: 5px 12px;
     border-radius: 15px;
     font-size: 0.8rem;
@@ -602,6 +636,8 @@ body {
 /* Typing Animation */
 .typing-container {
     overflow: visible;
+    width: 100%;
+    min-width: 100%;
 }
 
 .typing-text {
@@ -612,6 +648,8 @@ body {
     letter-spacing: 0.1em;
     width: auto;
     min-width: 100%;
+    max-width: none;
+    display: inline-block;
     animation: glow 2s ease-in-out infinite alternate;
 }
 
@@ -632,11 +670,6 @@ body {
 }
 
 /* Animations */
-@keyframes rotateBorder {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
 @keyframes scanLine {
     0% { top: -10%; opacity: 1; }
     50% { opacity: 1; }
@@ -897,7 +930,6 @@ body {
     padding: 20px;
     background: linear-gradient(45deg, var(--matrix-red), var(--matrix-green));
     border-radius: 50%;
-    animation: rotateBorder 3s linear infinite;
 }
 
 .profile-picture {
@@ -1008,7 +1040,9 @@ body {
 
 /* Typing Animation */
 .typing-container {
-    overflow: hidden;
+    overflow: visible;
+    width: 100%;
+    min-width: 100%;
 }
 
 .typing-text {
@@ -1019,6 +1053,8 @@ body {
     letter-spacing: 0.1em;
     width: auto;
     min-width: 100%;
+    max-width: none;
+    display: inline-block;
     /* Remove CSS typing animation - JavaScript will handle it */
 }
 
@@ -1042,11 +1078,6 @@ body {
 }
 
 /* Animations */
-@keyframes rotateBorder {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
 @keyframes scanLine {
     0% { top: -10%; opacity: 1; }
     50% { opacity: 1; }
@@ -1176,7 +1207,7 @@ body {
 
 .tech-tag {
     background: var(--matrix-red);
-    color: var(--matrix-white);
+    color: black;
     padding: 3px 8px;
     border-radius: 3px;
     font-size: 0.8rem;

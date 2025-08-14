@@ -3,10 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Portfolio{% endblock %}</title>
+    <title>{% block title %}Bappy Tawhid - Software Engineer{% endblock %}</title>
     
-    <!-- DotGothic16 Font -->
-    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <!-- ndot57 Font -->
+    <style>
+        @font-face {
+            font-family: 'ndot57';
+            src: url('https://cdn.shopify.com/s/files/1/0584/0932/0622/t/1/assets/fonts-ndot57.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -33,7 +41,7 @@
         <div class="container">
             <a class="navbar-brand matrix-brand" href="{% url 'portfolio:home' %}">
                 <span class="brand-bracket">[</span>
-                <span class="brand-text">PORTFOLIO</span>
+                <span class="brand-text">BAPPY TAWHID</span>
                 <span class="brand-bracket">]</span>
             </a>
             
@@ -65,7 +73,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link matrix-nav-link" href="{% url 'portfolio:blog_list' %}">
-                            <i class="fas fa-blog"></i> Blog
+                            <i class="fas fa-award"></i> Awards & Certifications
                         </a>
                     </li>
                     <li class="nav-item">
@@ -88,13 +96,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <p class="mb-0">&copy; {% now "Y" %} Portfolio. All rights reserved.</p>
+                    <p class="mb-0">&copy; {% now "Y" %} Bappy Tawhid. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-end">
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="https://github.com/BAPPYTAWHID99" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/bappy-tawhid-4b5ba81b5" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.hackerrank.com/bappytawhid99" target="_blank" class="social-link"><i class="fab fa-hackerrank"></i></a>
                     </div>
                 </div>
             </div>

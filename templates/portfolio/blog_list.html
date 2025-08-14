@@ -1,143 +1,268 @@
 {% extends 'portfolio/base.html' %}
 {% load static %}
 
-{% block title %}Blog - Matrix Portfolio{% endblock %}
+{% block title %}Awards & Certifications | Bappy Tawhid{% endblock %}
 
 {% block content %}
-<!-- Blog Header -->
-<section class="matrix-section" id="blog-header" style="padding-top: 120px;">
+<!-- Awards & Certifications Header -->
+<section class="matrix-section" id="awards-header" style="padding-top: 120px;">
     <div class="container">
         <div class="text-center">
-            <h1 class="section-title" data-aos="fade-up">Digital Chronicles</h1>
+            <h1 class="section-title" data-aos="fade-up">Awards & Certifications</h1>
             <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
-                Exploring the intersection of technology, creativity, and innovation through code and insights
+                Recognition of excellence and professional achievements in software development and technology
             </p>
         </div>
     </div>
 </section>
 
-<!-- Blog Posts -->
-<section class="matrix-section" id="blog-posts">
+<!-- Awards Section -->
+<section class="matrix-section" id="awards-section">
     <div class="container">
-        {% if posts %}
-            <div class="row">
-                {% for post in posts %}
-                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:100 }}">
-                        <article class="blog-card">
-                            {% if post.image %}
-                                <div class="blog-image-container">
-                                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="blog-image">
-                                    <div class="blog-overlay">
-                                        <a href="{{ post.get_absolute_url }}" class="read-more-btn">
-                                            <i class="fas fa-book-open"></i>
-                                            Read Article
-                                        </a>
-                                    </div>
-                                </div>
-                            {% else %}
-                                <div class="blog-image-placeholder">
-                                    <i class="fas fa-terminal"></i>
-                                </div>
-                            {% endif %}
-                            
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <span class="blog-date">
-                                        <i class="fas fa-calendar"></i>
-                                        {{ post.created_at|date:"M d, Y" }}
-                                    </span>
-                                    <span class="blog-read-time">
-                                        <i class="fas fa-clock"></i>
-                                        5 min read
-                                    </span>
-                                </div>
-                                
-                                <h2 class="blog-title">
-                                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-                                </h2>
-                                
-                                <p class="blog-excerpt">{{ post.excerpt }}</p>
-                                
-                                <div class="blog-footer">
-                                    <a href="{{ post.get_absolute_url }}" class="blog-link">
-                                        Continue Reading
-                                        <i class="fas fa-arrow-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </article>
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">
+                <i class="fas fa-trophy"></i> Awards & Recognition
+            </h2>
+            <div class="section-line"></div>
+        </div>
+        
+        <div class="awards-container">
+            <div class="award-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="award-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <div class="award-content">
+                    <h3 class="award-title">Top Contributor Award</h3>
+                    <p class="award-organization">Walton Digi-Tech Industries Ltd.</p>
+                    <p class="award-description">
+                        Awarded for being the top contributor to the development of the Walton Digi Provident Fund System, 
+                        demonstrating exceptional coding skills, system architecture design, and project delivery.
+                    </p>
+                    <div class="award-date">
+                        <i class="fas fa-calendar"></i>
+                        <span>2024</span>
                     </div>
-                {% endfor %}
+                    <div class="award-link">
+                        <a href="https://fas.waltonbd.com/file_share_raw.php?token=v8xq1n9brwcths274kj3muyg5poezf06lad20241215211409" 
+                           target="_blank" class="matrix-btn">
+                            <i class="fas fa-external-link-alt"></i>
+                            View Certificate
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Certifications Section -->
+<section class="matrix-section" id="certifications-section">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">
+                <i class="fas fa-certificate"></i> Professional Certifications
+            </h2>
+            <div class="section-line"></div>
+        </div>
+        
+        <div class="certifications-grid">
+            <!-- HackerRank Competitive Programming -->
+            <div class="certification-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="cert-header">
+                    <div class="cert-icon">
+                        <i class="fab fa-hackerrank"></i>
+                    </div>
+                    <div class="cert-provider">HackerRank</div>
+                </div>
+                <div class="cert-content">
+                    <h4 class="cert-title">Competitive Programming</h4>
+                    <p class="cert-description">Demonstrated proficiency in algorithmic problem-solving and competitive programming challenges.</p>
+                    <div class="cert-skills">
+                        <span class="skill-tag">Algorithms</span>
+                        <span class="skill-tag">Data Structures</span>
+                        <span class="skill-tag">Problem Solving</span>
+                    </div>
+                    <div class="cert-link">
+                        <a href="https://www.hackerrank.com/bappytawhid99" target="_blank" class="matrix-btn secondary">
+                            <i class="fas fa-external-link-alt"></i> View Profile
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Oracle SQL Databases -->
+            <div class="certification-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="cert-header">
+                    <div class="cert-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="cert-provider">Coursera</div>
+                </div>
+                <div class="cert-content">
+                    <h4 class="cert-title">Oracle SQL Databases Specialization</h4>
+                    <p class="cert-description">Comprehensive understanding of Oracle SQL databases, query optimization, and database management.</p>
+                    <div class="cert-skills">
+                        <span class="skill-tag">Oracle SQL</span>
+                        <span class="skill-tag">Database Design</span>
+                        <span class="skill-tag">Query Optimization</span>
+                    </div>
+                    <div class="cert-link">
+                        <a href="https://www.coursera.org/account/accomplishments/certificate/AG8TXPE3NHYJ" target="_blank" class="matrix-btn secondary">
+                            <i class="fas fa-external-link-alt"></i> View Certificate
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Version Control with Git -->
+            <div class="certification-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="cert-header">
+                    <div class="cert-icon">
+                        <i class="fab fa-git-alt"></i>
+                    </div>
+                    <div class="cert-provider">Coursera</div>
+                </div>
+                <div class="cert-content">
+                    <h4 class="cert-title">Version Control Systems utilizing GIT and Github</h4>
+                    <p class="cert-description">Expert-level proficiency in Git version control, GitHub workflows, and collaborative development practices.</p>
+                    <div class="cert-skills">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">Version Control</span>
+                    </div>
+                    <div class="cert-link">
+                        <a href="https://www.coursera.org/account/accomplishments/certificate/6LSN8UE4WP4W" target="_blank" class="matrix-btn secondary">
+                            <i class="fas fa-external-link-alt"></i> View Certificate
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ERP Certification -->
+            <div class="certification-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="cert-header">
+                    <div class="cert-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="cert-provider">Coursera</div>
+                </div>
+                <div class="cert-content">
+                    <h4 class="cert-title">ERP Certified</h4>
+                    <p class="cert-description">Understanding of Enterprise Resource Planning systems, business processes, and ERP implementation strategies.</p>
+                    <div class="cert-skills">
+                        <span class="skill-tag">ERP Systems</span>
+                        <span class="skill-tag">Business Processes</span>
+                        <span class="skill-tag">System Integration</span>
+                    </div>
+                    <div class="cert-link">
+                        <a href="https://www.coursera.org/account/accomplishments/certificate/DRBAWE62BE8H" target="_blank" class="matrix-btn secondary">
+                            <i class="fas fa-external-link-alt"></i> View Certificate
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SQL Skill HackerRank -->
+            <div class="certification-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="cert-header">
+                    <div class="cert-icon">
+                        <i class="fab fa-hackerrank"></i>
+                    </div>
+                    <div class="cert-provider">HackerRank</div>
+                </div>
+                <div class="cert-content">
+                    <h4 class="cert-title">SQL Skill Certification</h4>
+                    <p class="cert-description">Validated SQL programming skills through practical assessments and coding challenges.</p>
+                    <div class="cert-skills">
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Database Queries</span>
+                        <span class="skill-tag">Data Analysis</span>
+                    </div>
+                    <div class="cert-link">
+                        <a href="https://www.hackerrank.com/certificates/iframe/7567ec7991fb" target="_blank" class="matrix-btn secondary">
+                            <i class="fas fa-external-link-alt"></i> View Certificate
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IELTS Score -->
+            <div class="certification-card" data-aos="fade-up" data-aos-delay="600">
+                <div class="cert-header">
+                    <div class="cert-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <div class="cert-provider">IELTS</div>
+                </div>
+                <div class="cert-content">
+                    <h4 class="cert-title">IELTS English Proficiency</h4>
+                    <p class="cert-description">Overall Band Score: 6.5 (Reading: 6, Writing: 6, Listening: 6, Speaking: 7)</p>
+                    <div class="cert-skills">
+                        <span class="skill-tag">English</span>
+                        <span class="skill-tag">Communication</span>
+                        <span class="skill-tag">International</span>
+                    </div>
+                    <div class="cert-date">
+                        <i class="fas fa-calendar"></i>
+                        <span>2021</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Statistics Section -->
+<section class="matrix-section" id="stats-section">
+    <div class="container">
+        <div class="stats-container" data-aos="fade-up">
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <div class="stat-content">
+                    <span class="stat-number counter" data-target="1">0</span>
+                    <span class="stat-label">Professional Award</span>
+                </div>
             </div>
             
-            <!-- Pagination -->
-            {% if is_paginated %}
-                <div class="pagination-container" data-aos="fade-up">
-                    <nav aria-label="Blog pagination">
-                        <ul class="matrix-pagination">
-                            {% if page_obj.has_previous %}
-                                <li class="page-item">
-                                    <a class="page-link" href="?page=1">
-                                        <i class="fas fa-angle-double-left"></i>
-                                    </a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
-                                        <i class="fas fa-angle-left"></i>
-                                    </a>
-                                </li>
-                            {% endif %}
-                            
-                            {% for num in page_obj.paginator.page_range %}
-                                {% if page_obj.number == num %}
-                                    <li class="page-item active">
-                                        <span class="page-link">{{ num }}</span>
-                                    </li>
-                                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-                                    <li class="page-item">
-                                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
-                            
-                            {% if page_obj.has_next %}
-                                <li class="page-item">
-                                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">
-                                        <i class="fas fa-angle-right"></i>
-                                    </a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">
-                                        <i class="fas fa-angle-double-right"></i>
-                                    </a>
-                                </li>
-                            {% endif %}
-                        </ul>
-                    </nav>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-certificate"></i>
                 </div>
-            {% endif %}
-        {% else %}
-            <div class="no-posts" data-aos="fade-up">
-                <div class="no-posts-content">
-                    <i class="fas fa-file-alt"></i>
-                    <h3>No Blog Posts Yet</h3>
-                    <p>Stay tuned for upcoming articles about technology, development insights, and project walkthroughs.</p>
-                    <div class="coming-soon">
-                        <div class="typing-text">
-                            <span class="cursor">|</span>
-                            <span class="text">Articles loading...</span>
-                        </div>
-                    </div>
+                <div class="stat-content">
+                    <span class="stat-number counter" data-target="6">0</span>
+                    <span class="stat-label">Certifications</span>
                 </div>
             </div>
-        {% endif %}
+            
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="stat-content">
+                    <span class="stat-number counter" data-target="3">0</span>
+                    <span class="stat-label">Programming Platforms</span>
+                </div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="stat-content">
+                    <span class="stat-number">6.5</span>
+                    <span class="stat-label">IELTS Score</span>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}
 
 {% block extra_css %}
 <style>
-/* Blog Page Styles */
+/* Awards & Certifications Page Styles */
 .section-subtitle {
     color: rgba(255, 255, 255, 0.8);
     font-size: 1.1rem;
@@ -145,323 +270,367 @@
     margin: 0 auto 60px;
 }
 
-/* Blog Cards */
-.blog-card {
-    background: rgba(26, 26, 26, 0.95);
-    border: 1px solid var(--matrix-gray);
-    border-radius: 15px;
-    overflow: hidden;
-    transition: all var(--transition-speed) ease;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
 }
 
-.blog-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(255, 7, 61, 0.3);
-    border-color: var(--matrix-red);
-}
-
-.blog-image-container {
-    position: relative;
-    height: 200px;
-    overflow: hidden;
-}
-
-.blog-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform var(--transition-speed) ease;
-}
-
-.blog-card:hover .blog-image {
-    transform: scale(1.1);
-}
-
-.blog-image-placeholder {
-    width: 100%;
-    height: 200px;
-    background: linear-gradient(45deg, var(--matrix-black), var(--matrix-dark-gray));
+.section-header .section-title {
+    color: var(--matrix-white);
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--matrix-red);
-    font-size: 3rem;
+    gap: 15px;
 }
 
-.blog-overlay {
+.section-header .section-title i {
+    color: var(--matrix-red);
+    font-size: 2rem;
+}
+
+.section-line {
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--matrix-red), var(--matrix-green));
+    margin: 0 auto;
+    border-radius: 2px;
+    box-shadow: 0 0 10px var(--matrix-red-glow);
+}
+
+/* Awards Section */
+.awards-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+}
+
+.award-card {
+    background: rgba(26, 26, 26, 0.95);
+    border: 2px solid var(--matrix-red);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 800px;
+    position: relative;
+    transition: all var(--transition-speed) ease;
+    overflow: hidden;
+}
+
+.award-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--matrix-red), var(--matrix-green), var(--matrix-red));
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0.3;
+    animation: borderGlow 3s infinite;
+}
+
+@keyframes borderGlow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+}
+
+.award-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(255, 7, 61, 0.4);
+}
+
+.award-icon {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.award-icon i {
+    font-size: 4rem;
+    color: var(--matrix-red);
+    text-shadow: 0 0 30px var(--matrix-red-glow);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.award-content {
+    text-align: center;
+}
+
+.award-title {
+    color: var(--matrix-white);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-family: var(--n-dot-font);
+}
+
+.award-organization {
+    color: var(--matrix-green);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.award-description {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.award-date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--matrix-red);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.award-link {
+    margin-top: 20px;
+}
+
+/* Certifications Grid */
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.certification-card {
+    background: rgba(26, 26, 26, 0.95);
+    border: 1px solid var(--matrix-gray);
+    border-radius: 15px;
+    padding: 30px;
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.certification-card::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 3px;
+    background: linear-gradient(90deg, var(--matrix-green), var(--matrix-red));
     opacity: 0;
-    transition: opacity var(--transition-speed) ease;
+    transition: all var(--transition-speed) ease;
 }
 
-.blog-card:hover .blog-overlay {
+.certification-card:hover::before {
     opacity: 1;
 }
 
-.read-more-btn {
-    background: var(--matrix-red);
-    color: var(--matrix-white);
-    padding: 12px 24px;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all var(--transition-speed) ease;
+.certification-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 255, 0, 0.2);
+    border-color: var(--matrix-green);
+}
+
+.cert-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    box-shadow: 0 0 20px var(--matrix-red-glow);
-}
-
-.read-more-btn:hover {
-    background: var(--matrix-white);
-    color: var(--matrix-red);
-    transform: scale(1.05);
-}
-
-.blog-content {
-    padding: 25px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.blog-meta {
-    display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--matrix-gray);
 }
 
-.blog-date,
-.blog-read-time {
+.cert-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 255, 0, 0.1);
+    border: 2px solid var(--matrix-green);
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    gap: 5px;
+    justify-content: center;
+    color: var(--matrix-green);
+    font-size: 1.5rem;
 }
 
-.blog-date i,
-.blog-read-time i {
+.cert-provider {
     color: var(--matrix-red);
+    font-weight: 600;
+    font-size: 1rem;
 }
 
-.blog-title {
-    margin-bottom: 15px;
-}
-
-.blog-title a {
+.cert-title {
     color: var(--matrix-white);
-    text-decoration: none;
     font-size: 1.3rem;
     font-weight: 600;
-    line-height: 1.4;
-    transition: color var(--transition-speed) ease;
+    margin-bottom: 15px;
+    font-family: var(--n-dot-font);
 }
 
-.blog-title a:hover {
-    color: var(--matrix-red);
-}
-
-.blog-excerpt {
+.cert-description {
     color: rgba(255, 255, 255, 0.8);
     line-height: 1.6;
     margin-bottom: 20px;
-    flex-grow: 1;
 }
 
-.blog-footer {
-    margin-top: auto;
-    padding-top: 15px;
-    border-top: 1px solid var(--matrix-gray);
-}
-
-.blog-link {
-    color: var(--matrix-red);
-    text-decoration: none;
-    font-weight: 600;
+.cert-skills {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     gap: 8px;
-    transition: all var(--transition-speed) ease;
-}
-
-.blog-link:hover {
-    color: var(--matrix-white);
-    transform: translateX(5px);
-}
-
-/* No Posts State */
-.no-posts {
-    text-align: center;
-    padding: 100px 20px;
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.no-posts-content {
-    max-width: 500px;
-}
-
-.no-posts-content i {
-    font-size: 5rem;
-    color: var(--matrix-red);
-    margin-bottom: 30px;
-    opacity: 0.5;
-}
-
-.no-posts-content h3 {
-    color: var(--matrix-white);
-    font-size: 2rem;
     margin-bottom: 20px;
 }
 
-.no-posts-content p {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 30px;
+.skill-tag {
+    background: rgba(0, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    color: #00ffff;
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-family: var(--n-dot-font);
 }
 
-.coming-soon {
-    margin-top: 30px;
-}
-
-.typing-text {
-    font-family: 'Courier New', monospace;
-    font-size: 1.2rem;
-    color: var(--matrix-green);
+.cert-date {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 5px;
-}
-
-.cursor {
-    animation: blink 1s infinite;
+    gap: 8px;
     color: var(--matrix-red);
+    font-weight: 600;
+    margin-bottom: 15px;
 }
 
-.text {
-    animation: typing 4s infinite;
+.cert-link {
+    margin-top: auto;
 }
 
-@keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
-}
-
-@keyframes typing {
-    0% { opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { opacity: 0; }
-}
-
-/* Pagination */
-.pagination-container {
-    display: flex;
-    justify-content: center;
+/* Statistics Section */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    background: rgba(26, 26, 26, 0.95);
+    border: 1px solid var(--matrix-red);
+    border-radius: 20px;
+    padding: 40px;
     margin-top: 50px;
 }
 
-.matrix-pagination {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    gap: 10px;
-}
-
-.page-item .page-link {
-    background: rgba(26, 26, 26, 0.9);
+.stat-item {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
     border: 1px solid var(--matrix-gray);
-    color: var(--matrix-white);
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-decoration: none;
     transition: all var(--transition-speed) ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 45px;
 }
 
-.page-item .page-link:hover,
-.page-item.active .page-link {
-    background: var(--matrix-red);
-    border-color: var(--matrix-red);
+.stat-item:hover {
+    border-color: var(--matrix-green);
+    box-shadow: 0 10px 30px rgba(0, 255, 0, 0.2);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    color: var(--matrix-red);
+    margin-bottom: 15px;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
     color: var(--matrix-white);
-    box-shadow: 0 0 15px var(--matrix-red-glow);
+    margin-bottom: 10px;
+    font-family: var(--n-dot-font);
+}
+
+.stat-label {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .blog-meta {
-        flex-direction: column;
-        gap: 10px;
-        align-items: flex-start;
+    .certifications-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
     
-    .blog-content {
-        padding: 20px;
+    .award-card {
+        padding: 30px 20px;
+        margin: 0 20px;
     }
     
-    .no-posts-content {
-        padding: 0 20px;
+    .award-title {
+        font-size: 1.5rem;
     }
     
-    .typing-text {
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 30px 20px;
+    }
+    
+    .section-header .section-title {
+        font-size: 2rem;
         flex-direction: column;
         gap: 10px;
     }
 }
 
 @media (max-width: 576px) {
-    .blog-title a {
-        font-size: 1.2rem;
+    .stats-container {
+        grid-template-columns: 1fr;
     }
     
-    .no-posts-content i {
-        font-size: 4rem;
+    .cert-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
     }
     
-    .no-posts-content h3 {
-        font-size: 1.5rem;
+    .award-icon i {
+        font-size: 3rem;
     }
     
-    .matrix-pagination {
-        flex-wrap: wrap;
-        justify-content: center;
+    .award-title {
+        font-size: 1.3rem;
     }
 }
 
-/* Loading Animation for Blog Cards */
-.blog-card {
+/* Animation for counter */
+.counter {
+    transition: all 0.5s ease;
+}
+
+/* Loading animations */
+.award-card,
+.certification-card,
+.stat-item {
     animation: fadeInUp 0.6s ease forwards;
     opacity: 0;
     transform: translateY(30px);
 }
 
-.blog-card:nth-child(1) { animation-delay: 0.1s; }
-.blog-card:nth-child(2) { animation-delay: 0.2s; }
-.blog-card:nth-child(3) { animation-delay: 0.3s; }
-.blog-card:nth-child(4) { animation-delay: 0.4s; }
-.blog-card:nth-child(5) { animation-delay: 0.5s; }
-.blog-card:nth-child(6) { animation-delay: 0.6s; }
+.award-card { animation-delay: 0.2s; }
+.certification-card:nth-child(1) { animation-delay: 0.1s; }
+.certification-card:nth-child(2) { animation-delay: 0.2s; }
+.certification-card:nth-child(3) { animation-delay: 0.3s; }
+.certification-card:nth-child(4) { animation-delay: 0.4s; }
+.certification-card:nth-child(5) { animation-delay: 0.5s; }
+.certification-card:nth-child(6) { animation-delay: 0.6s; }
 
 @keyframes fadeInUp {
     to {
@@ -470,4 +639,38 @@
     }
 }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Counter animation
+    const counters = document.querySelectorAll('.counter');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = parseInt(counter.getAttribute('data-target'));
+                const current = parseInt(counter.textContent);
+                
+                if (current < target) {
+                    const increment = target / 20;
+                    const timer = setInterval(() => {
+                        const value = parseInt(counter.textContent);
+                        if (value < target) {
+                            counter.textContent = Math.ceil(value + increment);
+                        } else {
+                            counter.textContent = target;
+                            clearInterval(timer);
+                        }
+                    }, 50);
+                }
+                
+                observer.unobserve(counter);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    counters.forEach(counter => observer.observe(counter));
+});
+</script>
 {% endblock %}
