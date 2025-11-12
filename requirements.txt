@@ -1,0 +1,7 @@
+Django==5.2.4
+Pillow>=9.0.0
+
+# Frontend dependencies (loaded via CDN or static files):
+# - Bootstrap, AOS, Font Awesome are included in the templates/static assets and don't need pip installs.
+
+# Add more packages here if you install third-party apps later (e.g. whitenoise, gunicorn, django-crispy-forms)
