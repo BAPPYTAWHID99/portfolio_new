@@ -20,6 +20,7 @@ class Command(BaseCommand):
 
 🎓 Education:
 • Bachelor of Science in Computer Science & Engineering
+• Currently studying Global IT Engineering at Kyungsung University, Busan, South Korea (March 2026)
 • Specialized in Software Engineering and Data Analytics
 
 💻 Technical Stack:
