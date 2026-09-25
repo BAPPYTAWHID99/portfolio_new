@@ -1550,3 +1550,148 @@ body {
         text-shadow: none !important;
     }
 }
+
+/* Keep the home hero sized by its content on smaller screens. */
+@media (max-width: 991.98px) {
+    .hero-section {
+        min-height: auto;
+        height: auto;
+        padding: 110px 0 70px;
+    }
+
+    .hero-section > .container > .row {
+        min-height: 0 !important;
+    }
+
+    .profile-section {
+        width: 100%;
+        margin-bottom: 35px;
+    }
+
+    .profile-picture-container {
+        max-width: 100%;
+    }
+
+    .profile-picture {
+        width: clamp(220px, 55vw, 300px);
+        height: auto;
+        aspect-ratio: 1;
+    }
+
+    .profile-image,
+    .profile-placeholder,
+    .matrix-overlay {
+        width: 100%;
+        height: 100%;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero-content .description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .hero-section {
+        padding-top: 95px;
+    }
+
+    .profile-picture {
+        width: min(72vw, 250px);
+    }
+
+    .profile-stats .stat-item {
+        padding: 10px 4px;
+    }
+
+    .profile-stats .stat-label {
+        font-size: 0.7rem;
+        line-height: 1.2;
+    }
+}
+
+    /* Compact live weather panel beside the profile. */
+    .weather-card {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px 16px;
+        max-width: 320px;
+        margin: 8px auto 0;
+        padding: 12px 14px;
+        text-align: left;
+        background: rgba(5, 15, 10, 0.68);
+        border: 1px solid rgba(0, 255, 65, 0.3);
+        border-radius: 8px;
+        box-shadow: 0 0 16px rgba(0, 255, 65, 0.08);
+    }
+
+    .weather-heading {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .weather-icon {
+        font-size: 1.45rem;
+        line-height: 1;
+    }
+
+    .weather-city,
+    .weather-status {
+        display: block;
+    }
+
+    .weather-city {
+        color: var(--matrix-white);
+        font-size: 0.86rem;
+        font-weight: 700;
+    }
+
+    .weather-status {
+        margin-top: 3px;
+        color: var(--matrix-green);
+        font-family: 'Courier New', monospace;
+        font-size: 0.62rem;
+        text-transform: uppercase;
+    }
+
+    .weather-temperature {
+        color: var(--matrix-red);
+        font-size: 1.45rem;
+        font-weight: 700;
+        line-height: 1;
+        text-shadow: 0 0 14px var(--matrix-red-glow);
+    }
+
+    .weather-temperature sup {
+        font-size: 0.65rem;
+        vertical-align: top;
+    }
+
+    .weather-details {
+        grid-column: 1 / -1;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        color: rgba(255, 255, 255, 0.68);
+        font-size: 0.68rem;
+    }
+
+    .weather-details strong {
+        color: var(--matrix-white);
+        font-weight: 600;
+    }
+
+    @media (max-width: 575.98px) {
+        .weather-card {
+            max-width: 300px;
+        }
+    }

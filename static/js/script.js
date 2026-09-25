@@ -433,6 +433,71 @@ function downloadCV() {
     showNotification('CV download initiated! 📄✨', 'success');
 }
 
+function initWeatherWidget() {
+    const weatherCard = document.querySelector('.weather-card');
+    if (!weatherCard) return;
+
+    const weatherCodes = {
+        0: ['☀️', 'Clear sky'],
+        1: ['🌤', 'Mostly clear'],
+        2: ['⛅', 'Partly cloudy'],
+        3: ['☁️', 'Overcast'],
+        45: ['🌫', 'Foggy'],
+        48: ['🌫', 'Rime fog'],
+        51: ['🌦', 'Light drizzle'],
+        53: ['🌦', 'Drizzle'],
+        55: ['🌧', 'Heavy drizzle'],
+        61: ['🌧', 'Light rain'],
+        63: ['🌧', 'Rain'],
+        65: ['🌧', 'Heavy rain'],
+        71: ['🌨', 'Light snow'],
+        73: ['🌨', 'Snow'],
+        75: ['❄️', 'Heavy snow'],
+        80: ['🌦', 'Rain showers'],
+        81: ['🌦', 'Rain showers'],
+        82: ['⛈', 'Heavy showers'],
+        95: ['⛈', 'Thunderstorm'],
+        96: ['⛈', 'Storm with hail'],
+        99: ['⛈', 'Storm with hail']
+    };
+
+    const updateWeather = (weather) => {
+        const [icon, weatherStatus] = weatherCodes[weather.weather_code] || ['🌤', 'Current weather'];
+        weatherCard.querySelector('[data-weather-icon]').textContent = icon;
+        weatherCard.querySelector('[data-weather-city]').textContent = 'Busan';
+        weatherCard.querySelector('[data-weather-status]').textContent = `${weatherStatus} · Live data`;
+        weatherCard.querySelector('[data-weather-temperature]').textContent = Math.round(weather.temperature_2m);
+        weatherCard.querySelector('[data-weather-humidity]').textContent = `${weather.relative_humidity_2m}%`;
+        weatherCard.querySelector('[data-weather-wind]').textContent = `${Math.round(weather.wind_speed_10m)} km/h`;
+    };
+
+    const url = 'https://api.open-meteo.com/v1/forecast' +
+        '?latitude=35.1796' +
+        '&longitude=129.0756' +
+        '&current=temperature_2m,relative_humidity_2m,wind_speed_10m' +
+        '&temperature_unit=celsius' +
+        '&wind_speed_unit=kmh' +
+        '&timezone=Asia%2FSeoul';
+
+    fetch(url, { signal: AbortSignal.timeout(8000) })
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return response.json();
+        })
+        .then(data => {
+            if (!data.current) throw new Error('Open-Meteo response has no current data');
+            updateWeather(data.current);
+        })
+        .catch(error => {
+            console.error('Weather API error:', error);
+            weatherCard.querySelector('[data-weather-city]').textContent = 'Busan';
+            weatherCard.querySelector('[data-weather-status]').textContent = 'Live data unavailable';
+            weatherCard.querySelector('[data-weather-temperature]').textContent = '--';
+            weatherCard.querySelector('[data-weather-humidity]').textContent = '--';
+            weatherCard.querySelector('[data-weather-wind]').textContent = '--';
+        });
+}
+
 // Initialize all enhanced functions
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize Matrix Rain
@@ -444,6 +509,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initContactForm();
     initParallax();
     animateCounters();
+    initWeatherWidget();
     updateNavigation();
     
     // Add loading animation
