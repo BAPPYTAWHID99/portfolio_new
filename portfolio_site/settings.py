@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,10 +27,13 @@ SECRET_KEY = 'django-insecure-fo8txubs6vwd_827_xu(#y+&+svetdnu6%wu=%e-0kf^#j4178
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'portfolio-new-5-finm.onrender.com',
     'localhost',
     '127.0.0.1',
 ]
+
+render_hostname = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if render_hostname:
+    ALLOWED_HOSTS.append(render_hostname)
 
 
 
