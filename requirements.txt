@@ -1,5 +1,6 @@
 Django==5.2.4
 Pillow>=9.0.0
+gunicorn>=23.0.0,<24.0.0
 
 # Frontend dependencies (loaded via CDN or static files):
 # - Bootstrap, AOS, Font Awesome are included in the templates/static assets and don't need pip installs.
